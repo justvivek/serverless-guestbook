@@ -8,14 +8,14 @@ const guestbook = {
     return $.ajax({
       type: 'GET',
       url: `${apiUrl}/entries`,
-      dataType: 'jsonp'
+      dataType: 'json'
     });
   },
   // add a single guestbood entry
   add(name, email, comment) {
     console.log('Sending', name, email, comment)
     return $.ajax({
-      type: 'PUT',
+      type: 'POST',
       url: `${apiUrl}/entries`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
@@ -23,7 +23,7 @@ const guestbook = {
         email,
         comment,
       }),
-      dataType: 'jsonp'
+      dataType: 'json'
     });
   }
 };
@@ -46,7 +46,7 @@ const guestbook = {
       }
 
       const context = {
-        entries: result.entries;
+        entries: result.entries
       }
       $('#entries').html(entriesTemplate(context));
     }).error(function(error) {
