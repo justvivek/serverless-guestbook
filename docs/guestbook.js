@@ -42,7 +42,7 @@ const bankbook = {
   function loadEntries() {
     console.log('Loading entries...');
     $('#entries').html('Loading entries...');
-    guestbook.get().done(function(result) {
+    bankbook.get().done(function(result) {
       if (!result.entries) {
         return;
       }
