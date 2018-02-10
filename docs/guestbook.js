@@ -12,8 +12,8 @@ const guestbook = {
     });
   },
   // add a single guestbood entry
-  add(name, email, comment) {
-    console.log('Sending', name, email, comment)
+  add(name, email, password, actnumber, balance) {
+    console.log('Sending', name, email, password, actnumber, balance)
     return $.ajax({
       type: 'POST',
       url: `${apiUrl}/entries`,
@@ -21,7 +21,9 @@ const guestbook = {
       data: JSON.stringify({
         name,
         email,
-        comment,
+        password, 
+        actnumber, 
+        balance,
       }),
       dataType: 'json'
     });
@@ -63,7 +65,9 @@ const guestbook = {
     guestbook.add(
       $('#name').val().trim(),
       $('#email').val().trim(),
-      $('#comment').val().trim()
+      $('#password').val().trim(),
+      $('#actnumber').val().trim(),
+      $('#balance').val().trim()
     ).done(function(result) {
       // reload entries
       loadEntries();
