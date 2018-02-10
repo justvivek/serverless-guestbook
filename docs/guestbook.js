@@ -1,9 +1,9 @@
 /**
  * Web application
  */
-const apiUrl = 'https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/3fa994e4178176c29bbb7708f74bc61a1f01598430555d7852aef079d65bf257/guestbook';
-const guestbook = {
-  // retrieve the existing guestbook entries
+const apiUrl = 'https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/3fa994e4178176c29bbb7708f74bc61a1f01598430555d7852aef079d65bf257/bankbook';
+const bankbook = {
+  // retrieve the existing bankbook entries
   get() {
     return $.ajax({
       type: 'GET',
@@ -11,7 +11,7 @@ const guestbook = {
       dataType: 'json'
     });
   },
-  // add a single guestbood entry
+  // add a single bankbook entry
   add(name, email, password, actnumber, balance) {
     console.log('Sending', name, email, password, actnumber, balance)
     return $.ajax({
@@ -57,12 +57,12 @@ const guestbook = {
     });
   }
 
-  // intercept the click on the submit button, add the guestbook entry and
+  // intercept the click on the submit button, add the bankbook entry and
   // reload entries on success
   $(document).on('submit', '#addEntry', function(e) {
     e.preventDefault();
 
-    guestbook.add(
+    bankbook.add(
       $('#name').val().trim(),
       $('#email').val().trim(),
       $('#password').val().trim(),
